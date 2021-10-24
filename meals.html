@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JHFood</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <h3 class="title">JHFood</h3>
+          </a>
+        </div>
+  
+        
+          <div class="navbar-start">
+            <div class="logo">
+            <div class="columns">
+              <div class="column">
+                <div class = "block" style= "text-align: center; margin-top: 15%;">
+                  
+                <a class="button is-white" href="meals.html" style="font-family:PT Serif"> Meals </a>
+                </div>
+              </div>
+              <div class="column">
+                <div class = "block" style= "text-align: center">
+                <a  href="index.html" >
+                  <img src="IMG_0910.PNG" width = "50%" height = "50%" />
+                </a>
+              </div>
+              </div>
+              <div class="column">
+                <div class = "block" style= "text-align: center; margin-top: 15%;">
+                <a class="button is-white" href="events.html" style="font-family:PT Serif">
+                 Events 
+                
+              </a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary"  style="background-color: #afd275;">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-light"> Log in </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title" id="date"></h1><br>
+            <div class="columns">
+                <div class="column">
+                    <div class="dropdown is-active">
+                        <div class="dropdown-trigger">
+                            <button class="button" onclick="dropdown('myDropdown');">
+                                <span style="font-family:PT Serif">Select Food</span>
+                                <span class="icon is-small">
+                                    <ion-icon name="caret-down-outline"></ion-icon>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content" id="myDropdown" style="display: none;">
+                                <input class="input" type="text" placeholder="Search" id="myInput"
+                                    onkeyup="filterFunction()">
+                                <a class="dropdown-item" onclick="addFood('Roast Beef');">Roast Beef</a>
+                                <a class="dropdown-item" onclick="addFood('Scrambled Eggs');">Scrambled Eggs</a>
+                                <a class="dropdown-item" onclick="addFood('Peas and Carrots');">Peas and Carrots</a>
+                                <a class="dropdown-item" onclick="addFood('Shredded Potatoes');">Shredded Potatoes</a>
+                                <a class="dropdown-item" onclick="addFood('Mashed Potatoes');">Mashed Potatoes</a>
+                                <a class="dropdown-item" onclick="addFood('Roseda Beef Burgers');">Roseda Beef
+                                    Burgers</a>
+                                <a class="dropdown-item" onclick="addFood('Grilled Cheese');">Grilled Cheese</a>
+                                <a class="dropdown-item" onclick="addFood('Cheese Pizza');">Cheese Pizza</a>
+                                <a class="dropdown-item" onclick="addFood('Chicken Breast');">Chicken Breast</a>
+                                <a class="dropdown-item" onclick="addFood('Vegetable Pizza');">Vegetable Pizza</a>
+                                <a class="dropdown-item" onclick="addFood('Pasta with Marinara Sauce');">Pasta with
+                                    Marinara Sauce</a>
+                                <a class="dropdown-item" onclick="addFood('Cheddar Mac and Cheese');">Cheddar Mac and
+                                    Cheese</a>
+                                <a class="dropdown-item" onclick="addFood('Pepperoni Pizza');">Pepperoni Pizza</a>
+                                <a class="dropdown-item" onclick="addFood('Fries');">Fries</a>
+                                <a class="dropdown-item" onclick="addFood('No Bull Vegan Burgers');">No Bull Vegan
+                                    Burgers</a>
+                                <a class="dropdown-item" onclick="addFood('Quiche Lorraine');">Quiche Lorraine</a>
+                                <a class="dropdown-item" onclick="addFood('Beyond Sausage Pasta Bake');">Beyond Sausage
+                                    Pasta Bake</a>
+                                <a class="dropdown-item" onclick="addFood('Braised Spicy Garlic Broccolini');">Braised
+                                    Spicy Garlic Broccolini</a>
+                                <a class="dropdown-item" onclick="addFood('Milk');">Milk</a>
+                                <a class="dropdown-item" onclick="addFood('Coffee');">Coffee</a>
+                            </div>
+                        </div>
+                    </div><br><br>
+
+                    <div class="card">
+                        <header class="card-header" onclick="dropdown('brunch');">
+                            <div class="card-header-title">
+                                <h4 class="title is-4">Brunch</h4>
+                            </div>
+                            <button class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                    <ion-icon name="caret-down-outline" id="caret-down"></ion-icon>
+                                    <ion-icon name="caret-up-outline" id="caret-up" style="display:none;"></ion-icon>
+                                </span>
+                            </button>
+                        </header>
+                        <div class="card-content" id="brunch">
+                            <div class="content" id="brunch-content">
+                            </div>
+                        </div>
+                    </div><br>
+
+                    <div class="card">
+                        <header class="card-header">
+                            <div class="card-header-title">
+                                <h4 class="title is-4">Dinner</h4>
+                            </div>
+                            <button class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                    <ion-icon name="caret-down-outline" id="caret-down2"></ion-icon>
+                                    <ion-icon name="caret-up-outline" id="caret-up2" style="display:none;"></ion-icon>
+                                </span>
+                            </button>
+                        </header>
+                        <div class="card-content" id="dinner">
+                            <div class="content" id="dinner-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column"><br>
+                    <h4 class="title is-4">Average</h4>
+                    <h4 class="subtitle">4.97 (per meal)</h4>
+                    <p></p>
+                    <h4 class="title is-4">Your Total</h4>
+                    <h4 class="subtitle" id="total"></h4>
+                    <p id="compare"></p><br>
+                    
+                    <br></br>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content">
+                                <h3 class="title is-4">MAKE THE PLEDGE</h3>
+                                <h5 class="subtitle is-5">If you’d like, commit your meal and make a pledge to reduce
+                                    your carbon <i>food</i>print.</h5>
+                                <form>
+                                    <div class="columns">
+                                        <div class="column is-half">
+                                            <input class="input" type="text" placeholder="First Name">
+                                        </div>
+                                        <div class="column is-half">
+                                            <input class="input" type="text" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <input class="input" type="email" placeholder="Email">
+                                    <p></p>
+                                    <a class="button is-primary" style = "background-color: #afd275">
+                                      <strong>Commit</strong>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const date = new Date();
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        y = date.getFullYear();
+        m = months[date.getMonth()];
+        d = date.getDate();
+        document.getElementById("date").innerHTML = m + " " + d + ", " + y;
+
+        function dropdown(id) {
+            if (document.getElementById(id).style.display == "none") {
+                document.getElementById(id).style.display = "block";
+                document.getElementById("caret-down").style.display = "none";
+                document.getElementById("caret-up").style.display = "block";
+            } else {
+                document.getElementById(id).style.display = "none";
+                document.getElementById("caret-down").style.display = "block";
+                document.getElementById("caret-up").style.display = "none";
+            }
+        }
+
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        }
+
+        let total = 0;
+
+        function addFood(food) {
+            let size = 1;
+            let serving = "serving(s)";
+            let co2e = 0;
+
+            switch (food) {
+                case "Roast Beef": co2e = 14.236; break;
+                case "Scrambled Eggs": serving = "egg(s)"; co2e = 0.358; break;
+                case "Peas and Carrots": co2e = 0.318; break;
+                case "Shredded Potatoes": co2e = 0.288; break;
+                case "Mashed Potatoes": co2e = 0.288; break;
+                case "Roseda Beef Burgers": serving = "burger(s)"; co2e = 6.553; break;
+                case "Grilled Cheese": size = 2; serving = "sandwich(es)"; co2e = 1.120; break;
+                case "Cheese Pizza": serving = "slice(s)"; co2e = 1.454; break;
+                case "Chicken Breast": co2e = 1.840; break;
+                case "Vegetable Pizza": serving = "slice(s)"; co2e = 1.146; break;
+                case "Pasta with Marinara Sauce": co2e = 0.33; break;
+                case "Cheddar Mac and Cheese": co2e = 0.952; break;
+                case "Pepperoni Pizza": serving = "slice(s)"; co2e = 1.195; break;
+                case "Fries": co2e = 0.470; break;
+                case "No Bull Vegan Burgers": serving = "burger(s)"; co2e = 0.683; break;
+                case "Quiche Lorraine": serving = "slice(s)"; co2e = 0.662; break;
+                case "Beyond Sausage Pasta Bake": co2e = 0.334; break;
+                case "Braised Spicy Garlic Broccolini": serving = "cup(s)"; co2e = 0.360; break;
+                case "Milk": serving = "cup(s)"; co2e = 0.720; break;
+                case "Coffee": serving = "cup(s)"; co2e = 4.250; break;
+            }
+
+            if (document.getElementById(food) == null) {
+                document.getElementById("brunch-content").innerHTML += `<div>
+                        <div class="columns">
+                        <div class="column">
+                            <h5 class="title is-5">${food}</h5>
+                            <h6 class="subtitle is-6" style="float: left;">serving size : ${serving}</h6>
+                        </div>
+
+                        <div class="column">
+                        <h6 class="subtitle is-6" style="float: right; margin-top: 5%">
+                        <input class="input" min=0 onchange="changeCO2('${food}')" id="${food}" type="number" placeholder="1" value=1 style="width: 50px;">
+                            ${serving} =
+                            <output name="result" id="${food}out" >${co2e}</output>
+                            </h6>
+                        </div>
+                        </div>
+
+                        </div><br><br>`;
+            }
+                                    
+            document.getElementById("myDropdown").style.display = "none";
+
+            calcTotal();
+            document.getElementById("total").innerHTML = `${total}`;
+        }
+
+        function calcTotal() {    
+            let new_total = 0;
+            let foodArray = ["Roast Beef", "Scrambled Eggs", "Peas and Carrots", "Shredded Potatoes", "Mashed Potatoes", "Roseda Beef Burgers", "Grilled Cheese", "Cheese Pizza", "Chicken Breast",
+            "Vegetable Pizza", "Pasta with Marinara Sauce", "Cheddar Mac and Cheese", "Pepperoni Pizza", "Fries", "No Bull Vegan Burgers",
+            "Quiche Lorraine", "Beyond Sausage Pasta Bake", "Braised Spicy Garlic Broccolini", "Milk", "Coffee"];
+
+            for (let i = 0; i < foodArray.length; i++) {
+                if (document.getElementById(foodArray[i]+"out") != null) {
+                    let co2e = parseFloat(document.getElementById(foodArray[i]+"out").innerHTML);
+                    new_total += co2e;
+                }
+            }
+
+            document.getElementById("total").innerHTML = `${new_total}`;
+            new_total = new_total.toFixed(2);
+            total = new_total;
+            checkAverage(total);
+        }
+
+        function changeCO2(food) {
+            let size = 1;
+            let co2e = 0;
+
+            switch (food) {
+                case "Roast Beef": co2e = 14.236; break;
+                case "Scrambled Eggs": serving = "egg(s)"; co2e = 0.358; break;
+                case "Peas and Carrots": co2e = 0.318; break;
+                case "Shredded Potatoes": co2e = 0.288; break;
+                case "Mashed Potatoes": co2e = 0.288; break;
+                case "Roseda Beef Burgers": serving = "burger(s)"; co2e = 6.553; break;
+                case "Grilled Cheese": size = 2; serving = "sandwich(es)"; co2e = 1.120; break;
+                case "Cheese Pizza": serving = "slice(s)"; co2e = 1.454; break;
+                case "Chicken Breast": co2e = 1.840; break;
+                case "Vegetable Pizza": serving = "slice(s)"; co2e = 1.146; break;
+                case "Pasta with Marinara Sauce": co2e = 0.33; break;
+                case "Cheddar Mac and Cheese": co2e = 0.952; break;
+                case "Pepperoni Pizza": serving = "slice(s)"; co2e = 1.195; break;
+                case "Fries": co2e = 0.470; break;
+                case "No Bull Vegan Burgers": serving = "burger(s)"; co2e = 0.683; break;
+                case "Quiche Lorraine": serving = "slice(s)"; co2e = 0.662; break;
+                case "Beyond Sausage Pasta Bake": co2e = 0.334; break;
+                case "Braised Spicy Garlic Broccolini": serving = "cup(s)"; co2e = 0.360; break;
+                case "Milk": serving = "cup(s)"; co2e = 0.720; break;
+                case "Coffee": serving = "cup(s)"; co2e = 4.250; break;
+            }
+
+            co2e = co2e * document.getElementById(food).value;
+            document.getElementById(food + 'out').innerHTML = co2e.toFixed(2);
+            calcTotal();
+        }
+
+        function checkAverage(total) {
+            let percent = ((Math.abs(4.97 - total) / 4.97) * 100).toFixed(2);
+
+            if (total == 4.97) {
+                document.getElementById("compare").innerHTML = `Wow! Your meal fell at the average CO2 emissions for one meal, but try swapping something out for a lower carbon alternative next time.`;
+            } else if (total < 4.97) {
+                document.getElementById("compare").innerHTML = `Congrats! You’re ${percent}% below the average CO2 emissions for one meal.`;
+            } else {
+                document.getElementById("compare").innerHTML = `Uh oh! You’re ${percent}% above the average CO2 emissions for one meal - try swapping something out for a lower carbon alternative next time.`;
+            }
+        }
+    </script>
+
+    <style>
+        #date {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 14px !important;
+            font-weight: normal !important;
+            font-family: "PT Serif";
+            text-align: left;
+
+        }
+
+        .title {
+            font-family: "Helvetica" !important;
+        }
+
+        .content {
+            font-weight: normal !important;
+            font-family: "PT Serif" !important;
+        }
+
+        .logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+        .dropdown-item {
+            font-family: "PT Serif";
+        }
+
+        #compare {
+            font-family:"PT Serif";
+        }
+    </style>
+
+    <footer class="footer" style="background-color: #ebf0cc">
+        <div class="columns">
+            <div class="column"></div>
+            <div class="column">
+                <p class="title">
+                    <strong>Contact</strong>
+                </p>
+                <p><strong>Mobile</strong> : (123) 456-7890</p>
+                <p><strong> Email</strong> : food@jhu.edu</p>
+                <p>
+                    <strong> Address</strong> : Baltimore, MD 21218 -- JHU Homewood
+                    Campus
+                </p>
+            </div>
+            <div class="column">
+                <div class="logo">
+                    <img src="IMG_0910.PNG" alt="Image" width="50%" height="50%" margin-left="30%"
+                        margin-right="auto" />
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
